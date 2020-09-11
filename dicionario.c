@@ -25,6 +25,11 @@ String *carregaDicionario(FILE *dic, unsigned long int *contador){
 		{
 			iteracao++;
 			ptr = realloc (ptr, iteracao*MAX_PALAVRAS*sizeof(String)); // Realoca mais MAX_PALAVRAS lugares de palavras
+			if (!ptr)
+			{
+				perror("REALLOC FAILED");
+				exit(1);
+			}
 		}
 		fscanf(dic, "%ms", &ptr[(*contador)]);
 	}
